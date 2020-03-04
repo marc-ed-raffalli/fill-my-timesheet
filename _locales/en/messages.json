@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "Fill my timesheet!"
+  },
+  "appDesc": {
+    "message": "Helper extension to fill out timesheet form. Currently supports Purely HR timesheet form."
+  }
+}

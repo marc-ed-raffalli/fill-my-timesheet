@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="./options.css">
+
+  <title>Fill my timesheet | Options</title>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Fill my timesheet</h1>
+</header>
+
+<div class="main">
+  <div class="container">
+
+    <p>
+      Fill my timesheet allows to quickly fill a timesheet report and avoid tedious repetitive manual entry.
+    </p>
+    <p>
+      Configure your most frequent time reports on the form below.
+      These reports will be available to select in the popup.
+    </p>
+
+    <h2>Add a new report</h2>
+
+    <div class="report-form">
+      <div class="col">
+        <label for="name">Report name*:</label>
+      </div>
+
+      <div class="col">
+        <input type="text" id="name" placeholder="Standard week schedule" required>
+      </div>
+
+      <div class="col">
+        <label for="timeIn">Time in:</label>
+      </div>
+
+      <div class="col">
+        <input type="text" id="timeIn" placeholder="e.g. 8:30">
+      </div>
+
+      <div class="col">
+        <label for="timeOut">Time out:</label>
+      </div>
+
+      <div class="col">
+        <input type="text" id="timeOut" placeholder="e.g. 17:00">
+      </div>
+
+      <div class="col">
+        <label for="comment">Daily comment:</label>
+      </div>
+      <div class="col">
+        <textarea id="comment" placeholder="e.g. 30 mins break taken" rows="3"></textarea>
+      </div>
+
+      <div class="col">Days:</div>
+      <div class="col">
+        <div class="day-select-container"></div>
+      </div>
+
+      <div class="col"></div>
+      <div class="col">
+        <button id="addReport">Add a time report</button>
+        <button id="cancelReport">Cancel</button>
+      </div>
+    </div>
+
+    <h2>My time reports</h2>
+
+    <ul class="time-reports">
+      <li class="message">
+        <div>Use the form to add a time report.</div>
+      </li>
+      <li class="time-report">
+        <div class="content">
+          <div class="name">Report name</div>
+          <div class="days">Mon, Tues, Wed</div>
+          <div class="time">8:30 => 17:30</div>
+          <div class="comment">Comment</div>
+        </div>
+        <div class="actions">
+          <button class="edit">Edit</button>
+          <button class="danger remove">Delete</button>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="secondary">Copyright (c) 2020 Marc-Ed Raffalli</div>
+    <a href="https://marc-ed-raffalli.github.io/en/projects/time-sheet-automation-chrome-extension"
+       target="_blank">About</a>
+    <a href="https://github.com/marc-ed-raffalli/fill-my-timesheet" target="_blank">Github</a>
+  </div>
+</footer>
+
+<script type="text/javascript" src="./shared.js"></script>
+<script type="text/javascript" src="./options.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+:root {
+  --fmt-border-radius: 3px;
+  --fmt-color-1: #2C434A;
+  --fmt-color-2: #FFFFFF;
+  --fmt-color-2_15: #f0f0f0;
+  --fmt-color-2_40: #d7d7d7;
+  --fmt-color-2_50: #888888;
+  --fmt-color-3: #6ECDC4;
+  --fmt-color-4: #16779C;
+  --fmt-color-5: #76AFD4;
+  --fmt-color-danger: #E65026;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Calibri, Arial, sans-serif;
+  color: var(--fmt-color-1);
+  background-color: var(--fmt-color-2_15);
+}
+
+h1 {
+  margin: 0;
+  font-weight: 300;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input,
+textarea {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid var(--fmt-color-5);
+  border-radius: var(--fmt-border-radius);
+}
+
+button {
+  cursor: pointer;
+  border-radius: 2px;
+  font-family: Calibri, Arial, sans-serif;
+  background-color: var(--fmt-color-4);
+  color: var(--fmt-color-2);
+}
+
+button:disabled {
+  background-color: #aaa !important;
+  border: 1px solid #aaa !important;
+}
+
+button.danger {
+  background-color: var(--fmt-color-danger) !important;
+  border: 1px solid var(--fmt-color-danger) !important;
+}
+
+p {
+  margin: 0;
+}
+
+.page-header {
+  background-color: var(--fmt-color-4);
+  color: var(--fmt-color-2)
+}
+
+.page-header,
+.main,
+.page-footer {
+  padding: 1rem;
+}
+
+.main {
+  flex: 1;
+}
+
+.secondary {
+  color: var(--fmt-color-2_50);
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+}

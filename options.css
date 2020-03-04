@@ -1,0 +1,153 @@
+
+.page-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  border-top: 1px solid var(--fmt-color-4);
+}
+
+.page-footer .container {
+  display: flex;
+  flex: 1;
+  font-size: .8rem;
+  margin: 0 -.5rem;
+}
+
+.page-footer .container > * {
+  padding: 0 .5rem;
+}
+
+/* Form */
+
+.col {
+  margin: .25rem 0;
+}
+
+.col:nth-of-type(2n+1) {
+  margin-top: 1rem;
+}
+
+.report-form input[type="text"],
+.report-form textarea {
+  display: block;
+  width: 100%;
+}
+
+.report-form textarea {
+  resize: vertical;
+  max-height: 200px;
+}
+
+#addReport {
+  padding: .75rem 2rem;
+}
+
+#cancelReport {
+  background-color: var(--fmt-color-5);
+  padding: .5rem 1.5rem;
+}
+
+@media screen and (min-width: 576px) {
+
+  .col,
+  .col:nth-of-type(2n+1) {
+    margin: 0;
+  }
+
+  .report-form {
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-columns: 150px auto;
+    align-items: baseline;
+  }
+
+  .report-form .col:nth-of-type(2n+1) {
+    grid-column: 1;
+  }
+
+  .report-form .col:nth-of-type(2n) {
+    grid-column: 2;
+  }
+
+}
+
+/* List */
+
+.time-reports {
+  margin: 0 -.5rem;
+}
+
+.time-report {
+  padding: .5rem;
+  border: 1px solid var(--fmt-color-4);
+  border-radius: var(--fmt-border-radius);
+}
+
+.time-report,
+.time-reports .message {
+  display: flex;
+  margin: .5rem;
+  box-sizing: border-box;
+}
+
+.time-reports .message {
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem ;
+  background-color: var(--fmt-color-2_40);
+  border-radius: var(--fmt-border-radius);
+}
+
+.time-report .content {
+  flex-grow: 1;
+  word-break: break-word;
+}
+
+.time-report .actions {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding-left: .5rem;
+}
+
+.time-report .actions button {
+  margin: .25rem 0;
+  padding: .25rem .5rem;
+}
+
+.day-select-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-select-container label {
+  user-select: none;
+}
+
+@media screen and (min-width: 576px) {
+
+  .time-reports {
+    margin: 0 -.25rem;
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .time-report,
+  .time-reports .message {
+    margin: .25rem;
+  }
+
+  .time-report {
+    flex-basis: calc(50% - .25rem * 2);
+  }
+
+}
+
+@media screen and (min-width: 992px) {
+
+  .time-report {
+    flex-basis: calc(33% - .25rem * 2);
+  }
+
+}

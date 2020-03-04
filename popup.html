@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./shared.css">
+  <link rel="stylesheet" href="./popup.css">
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Fill my timesheet</h1>
+</header>
+
+<div class="main">
+  <div class="no-report">
+    <p>No reports found.</p>
+    <p>Configure your most frequent time reports on the options page.</p>
+
+    <div class="actions">
+      <button class="openOption">Open options</button>
+    </div>
+  </div>
+
+  <div class="timesheet-form">
+    <div class="col">
+      <label for="reportSelect">Select report:</label>
+    </div>
+
+    <div class="col">
+      <select id="reportSelect"></select>
+    </div>
+
+    <div class="col report-info">
+      <div class="days">Mon, Tues, Wed</div>
+      <div class="time">8:30 => 17:30</div>
+      <div class="comment">Comment</div>
+    </div>
+
+    <div class="col">
+      <a class="openOption" href="#">Manage reports</a>
+    </div>
+    <div class="col actions">
+      <button id="submit">Save me some time!</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="./shared.js"></script>
+<script type="text/javascript" src="./popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "version": "1.0.0",
+  "default_locale": "en",
+  "manifest_version": 2,
+  "icons": {
+    "128": "images/fmt-icon.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.purelyhr.com/*"
+      ],
+      "js": [
+        "shared.js",
+        "content.js",
+        "content-purely-hr.js"
+      ]
+    }
+  ],
+  "page_action": {
+    "default_title": "Complete form to automatically fill the timesheet",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage"
+  ]
+}
