@@ -13,6 +13,11 @@
       dayCommentIcon: '.phr-set-comment-for-day',
       dayCommentField: '.modal-dialog #dailyCommentForm textarea.form-control',
       dayCommentSave: '.modal-dialog .modal-footer button.phr-confirm-btn'
+    },
+    statusClasses = {
+      timeInputEmpty: 'zero',
+      commentFilled: 'fa-comment',
+      commentModalOpened: 'modal-open'
     };
 
   fmtApi.utils.setMessageProxy({
@@ -83,6 +88,7 @@
         await cb(row);
       } catch (err) {
         if (err.message.match(/timeout for wait/i)) {
+          await fmtApi.utils.wait(100);
           rows = itemsGetter();
           i--;
         }
@@ -91,15 +97,20 @@
   }
 
   async function setInputValue(elt, value) {
-    if (!value) {
+    // Do not modify if no value or the input already contains data
+    if (!value || elt.value.length !== 0) {
       return;
     }
 
-    elt.dispatchEvent(new Event('click', evtArgs));
-    elt.dispatchEvent(new KeyboardEvent('keydown', {keyCode: 8, which: 8}));
-    elt.value = value;
-    elt.dispatchEvent(new Event('change', evtArgs));
-    elt.dispatchEvent(new KeyboardEvent('keydown', {keyCode: 27, which: 27}));
+    // While the field is marked as not completed
+    await fmtApi.utils.waitForIt(() => {
+      elt.dispatchEvent(new Event('click', evtArgs));
+      elt.dispatchEvent(new KeyboardEvent('keydown', {keyCode: 8, which: 8}));
+      elt.value = value;
+      elt.dispatchEvent(new Event('change', evtArgs));
+      elt.dispatchEvent(new KeyboardEvent('keydown', {keyCode: 27, which: 27}));
+      return !elt.classList.contains(statusClasses.timeInputEmpty);
+    });
 
     // wait for time picker to be hidden
     return fmtApi.utils.waitForIt(() => {
@@ -113,7 +124,14 @@
       return;
     }
 
-    row.querySelector(selectors.dayCommentIcon).dispatchEvent(new Event('click', evtArgs));
+    const commentIcon = row.querySelector(selectors.dayCommentIcon);
+
+    // Do not add a comment if there is already one
+    if (commentIcon.classList.contains(statusClasses.commentFilled)) {
+      return;
+    }
+
+    commentIcon.dispatchEvent(new Event('click', evtArgs));
 
     // wait for field to be visible in the modal dialog
     await fmtApi.utils.waitForIt(() => {
@@ -124,7 +142,11 @@
     document.querySelector(selectors.dayCommentField).value = value;
     document.querySelector(selectors.dayCommentSave).dispatchEvent(new Event('click', evtArgs));
 
-    return fmtApi.utils.waitForIt(() => document.querySelector(selectors.dayCommentField) === null);
+    // Wait for comment icon to turn dark and for the modal to close
+    return fmtApi.utils.waitForIt(() => {
+      return commentIcon.classList.contains(statusClasses.commentFilled) &&
+        !document.body.classList.contains(statusClasses.commentModalOpened);
+    });
   }
 
 })();
